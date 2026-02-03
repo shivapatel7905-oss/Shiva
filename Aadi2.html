@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+        height:100vh;
+        background: radial-gradient(circle at top, #1a002b, #000);
+        overflow:hidden;
+        color:white;
+    }
+
+    /* Stars */
+    body::before{
+        content:"";
+        position:fixed;
+        width:100%;
+        height:100%;
+        background:url('pp.jpg');
+        animation: stars 60s linear infinite;
+        opacity:0.4;
+    }
+
+    @keyframes stars{
+        from{background-position:0 0;}
+        to{background-position:10000px 5000px;}
+    }
+
+    .container{
+        position:relative;
+        z-Aadi2:2;
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex-direction:column;
+        text-align:center;
+        padding:20px;
+    }
+
+    h1{
+        font-size:3.2rem;
+        background: linear-gradient(90deg, #ffcc00, #ff4ecd, #00ffe1);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+        from{text-shadow:0 0 10px #ff4ecd;}
+        to{text-shadow:0 0 30px #00ffe1;}
+    }
+
+    h2{
+        margin-top:15px;
+        font-size:1.5rem;
+        opacity:0;
+        animation: fadeIn 2s forwards 1.5s;
+    }
+
+    @keyframes fadeIn{
+        to{opacity:1;}
+    }
+
+    .btn{
+        margin-top:30px;
+        padding:15px 35px;
+        font-size:1.1rem;
+        border:none;
+        border-radius:30px;
+        cursor: pointer;
+        background:linear-gradient(45deg,#ff4ecd,#ffcc00);
+        color:#000;
+        box-shadow:0 0 20px #ff4ecd;
+        transition:0.3s;
+    }
+
+    .btn:hover{
+        transform:scale(1.1);
+        box-shadow:0 0 40px #ffcc00;
+    }
+
+    .message{
+        display:none;
+        margin-top:30px;
+        font-size:1.2rem;
+        line-height:1.8;
+        animation: zoom 1s ease forwards;
+    }
+
+    @keyframes zoom{
+        from{transform:scale(0.5); opacity:0;}
+        to{transform:scale(1); opacity:1;}
+    }
+
+    /* Balloons */
+    .balloon{
+        position:absolute;
+        bottom:-150px;
+        width:60px;
+        height:80px;
+        border-radius:50%;
+        animation: fly 8s linear infinite;
+    }
+
+    @keyframes fly{
+        from{transform:translateY(0);}
+        to{transform:translateY(-120vh);}
+    }
+    .nxt{
+        margin-top:30px;
+        padding:15px 35px;
+        font-size:1.1rem;
+        border:none;
+        border-radius:30px;
+        cursor: pointer;
+        background:linear-gradient(45deg,#ff4ecd,#ffcc00);
+        color:#000;
+        box-shadow:0 0 20px #ff4ecd;
+        transition:0.3s;
+    }
+
+    .nxt:hover{
+        transform:scale(1.1);
+        box-shadow:0 0 40px #ff0000;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🎉 Happy Birthday Bachhaa😘🎂</h1>
+    <h2>Wishing you a day full of magic & smiles ✨</h2>
+
+    <button class="btn" onclick="showWish()">Open Your Surprise 🎁</button>
+    <button class="nxt" onclick="handleClick()" id="Next">Tap to NEXT🎁</button>
+    <audio id="song" preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+    <div class="message" id="msg">
+        🌟 May your life shine brighter than stars <br>
+        💖 May all your dreams come true <br>
+        🚀 Keep rising, keep smiling <br><br>
+        <b>Once again, Happy Birthday! 🎉🎂</b>
+    </div>
+</div>
+
+<script>
+   function handleClick() {
+    window.location.href = "Aadi3.html";
+   }
+let msgText = "";
+let i = 0;
+    function showWish(){
+        document.getElementById("msg").style.display="block";
+        createBalloons();
+        document.getElementById("song").play();
+        // typeWriter();
+        // launchFireworks();
+}
+
+    function createBalloons(){
+        for(let i=0;i<20;i++){
+            let b=document.createElement("div");
+            b.className="balloon";
+            b.style.left=Math.random()*100+"%";
+            b.style.background=`hsl(${Math.random()*360},100%,60%)`;
+            b.style.animationDuration=(5+Math.random()*5)+"s";
+            document.body.appendChild(b);
+        }
+    }
+</script>
+

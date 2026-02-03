@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Beta💗🎉</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+body{
+    background: radial-gradient(circle,#1a1a2e,#000);
+    color:white;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card{
+    background:rgb(142, 116, 214);
+    backdrop-filter: blur(10px);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    width:90%;
+    max-width:420px;
+    box-shadow:0 0 30px rgba(255,0,150,0.5);
+    animation: zoom 1s ease;
+}
+@keyframes zoom{
+    from{transform:scale(0);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    margin:15px 0;
+    font-size:1rem;
+}
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    background:#ff2e63;
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    margin-top:10px;
+}
+button:hover{transform:scale(1.05);}
+#message{
+    margin-top:20px;
+    font-size:1.2rem;
+    min-height:60px;
+}
+.cake{
+    font-size:80px;
+    margin:20px 0;
+    cursor:pointer;
+    transition:0.5s;
+}
+.cut{
+    transform:rotate(-20deg) scale(1.2);
+}
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-Aadi1:-1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<div class="card">
+    <h1>🦋Happy Birthday Mahnoor Beta ji💗😘</h1>
+    <input type="text" id="name" placeholder="Enter Name 🎈">
+    <button onclick="start(),handleClick()" id="surpriseBtn">Surprise💌🎁</button>
+    <div class="cake" onclick="cutCake()">🎂</div>
+    <div id="message"></div>
+</div>
+
+<audio id="music">
+    <source src="ss.mp3">
+</audio>
+
+<script>
+    let clickedOnce = false;
+
+function handleClick() {
+  if (!clickedOnce) {
+    // 🔹 FIRST CLICK
+    start(); // tumhara existing function
+    document.getElementById("surpriseBtn").innerText = "Next 🎂➡️";
+    clickedOnce = true;
+  } else {
+    // 🔹 SECOND CLICK
+    const name = document.getElementById("name").value || "Special One";
+    localStorage.setItem("username", name);
+    window.location.href = "Aadi2.html";
+  }
+}
+let msgText = "";
+let i = 0;
+
+function start(){
+    const name = document.getElementById("name").value || "Special One";
+    msgText = `Happy Birthday ${name}! 🎂🎉
+May your life shine brighter every day ✨`;
+    i = 0;
+    document.getElementById("message").innerHTML = "";
+    document.getElementById("music").play();
+    typeWriter();
+    launchFireworks();
+}
+
+function typeWriter(){
+    if(i < msgText.length){
+        document.getElementById("message").innerHTML += msgText.charAt(i);
+        i++;
+        setTimeout(typeWriter,50);
+    }
+}
+
+function cutCake(){
+    document.querySelector(".cake").classList.toggle("cut");
+}
+
+/// 🎆 Fireworks
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+
+function launchFireworks(){
+    for(let i=0;i<200;i++){
+        particles.push({
+            x: canvas.width/2,
+            y: canvas.height/2,
+            vx:(Math.random()-0.5)*6,
+            vy:(Math.random()-0.5)*6,
+            life:100,
+            color:`hsl(${Math.random()*360},100%,60%)`
+        });
+    }
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach((p,Aadi1)=>{
+        p.x+=p.vx;
+        p.y+=p.vy;
+        p.life--;
+        ctx.fillStyle=p.color;
+        ctx.fillRect(p.x,p.y,3,3);
+        if(p.life<=0) particles.splice(Aadi1,1);
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
+

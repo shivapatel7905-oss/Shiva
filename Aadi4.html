@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Someone Special ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",system-ui,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  overflow:hidden;
+}
+
+/* soft glow particles */
+span.p{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:rgba(255,255,255,0.8);
+  border-radius:50%;
+  animation: float 8s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);opacity:0}
+  20%{opacity:1}
+  to{transform:translateY(-20vh);opacity:0}
+}
+
+/* glass card */
+.card{
+  position:relative;
+  width:90%;
+  max-width:420px;
+  padding:35px 30px;
+  border-radius:22px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  box-shadow:0 0 40px rgba(255,105,180,0.35);
+  text-align:center;
+  animation: pop 1.2s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.7);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+
+h1{
+  font-size:2.3rem;
+  background:linear-gradient(90deg,#ff9a9e,#fad0c4,#fbc2eb);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:12px;
+}
+
+h2{
+  font-size:1.1rem;
+  font-weight:400;
+  opacity:0.9;
+}
+
+.line{
+  width:60px;
+  height:3px;
+  background:#ff9a9e;
+  margin:18px auto;
+  border-radius:5px;
+}
+
+button{
+  margin-top:28px;
+  padding:14px 34px;
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff9a9e,#fad0c4);
+  color:#000;
+  box-shadow:0 0 25px rgba(255,154,158,0.8);
+  transition:0.35s;
+}
+
+button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 45px rgba(255,154,158,1);
+}
+
+.msg{
+  display:none;
+  margin-top:25px;
+  font-size:1.05rem;
+  line-height:1.9;
+  animation: fade 1s ease forwards;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* heart */
+.heart{
+  font-size:2rem;
+  margin-top:15px;
+  animation: beat 1.2s infinite;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.25)}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Happy Birthday in Urdu 🎂</h1>
+  <h2>To someone who makes days brighter ✨</h2>
+  <div class="line"></div>
+
+  <button onclick="openWish(),shiva()" id="raj">Tap for a smile 💫</button>
+
+  <div class="msg" id="wish">
+    YE DIN KHAAS AAPKA HAI<br>
+    OR MERA HAR DIN AAPKE HONE SE KHAASN HAI🌸<br>
+    YOUM-E-PAIDAISH<br>
+    KI-PUR-KHULOOS MUBARAKBAAD
+    <br>
+    JAHAA.N-AARA✨<br><br>
+    <b>Have a truly wonderful birthday 💖</b>
+    <div class="heart">💗</div>
+    <audio id="audio" preload="auto">
+      <source src="kurti1.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+</div>
+
+<script>
+ let clickedOnce = false;
+
+function shiva() {
+  if (!clickedOnce) {
+    // 🔹 FIRST CLICK
+    openWish(); // tumhara existing function
+    document.getElementById("raj").innerText = "Next 🎂➡️";
+    // document.getElementById("audio").play();
+    audio.currentTime = 0;
+    audio.play();
+    clickedOnce = true;
+  } else {
+    // 🔹 SECOND CLICK
+    const name = document.getElementsByClassName("line").value || "Special One";
+    localStorage.setItem("username", name);
+    window.location.href = "Aadi5.html";
+  }
+}
+function openWish(){
+  document.getElementById("wish").style.display="block";
+}
+
+/* particles */
+for(let i=0;i<40;i++){
+  let s=document.createElement("span");
+  s.className="p";
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*8+"s";
+  s.style.animationDuration=6+Math.random()*6+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
+

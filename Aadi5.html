@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;700&display=swap');
+
+        body {
+
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #e16666; /* gold color */
+            margin-top: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1em;
+            color: #333;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transition: transform 0.5s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Floating confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff3366;
+            top: -10px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Birthday, bdy gurlll!</h1>
+    <p>🍃Har saans me tera 💫ehsaas bas gaya hai,🌹
+Tera janamdin mere liye🌠 💗bhi khaas ban gaya hai 💖
+Zindagi ki har khushi tere naam kar doon,💟
+Aaj ka din sirf tere naam 🫶likh doon 💞
+Happy Birthday jaan ✨</p>
+    <img src="birthday-photo.jpeg" alt="Birthday Photo">
+<audio id="music" preload="auto">
+    <source src="kurti.mp3" type="audio/mpeg">
+</audio>
+    <!-- Confetti effect -->
+    <script>
+        function playMusic() {
+            const music =
+            document.getElementById("music");
+            music.volume = 0.8;
+            music.play();
+            document.removeEventListener("click",
+        playMusic);
+            
+        document.removeEventListener("touchstart",
+            playMusic
+        );
+        }
+        document.addEventListener("click", playMusic);
+        document.addEventListener("touchstart",
+            playMusic
+        );
+        for(let i=0; i<50; i++){
+            let confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.backgroundColor = `hsl(${Math.random()*360}, 80%, 60%)`;
+            confetti.style.width = confetti.style.height = Math.random()*12 + 8 + 'px';
+            confetti.style.animationDuration = (Math.random()*3 + 2) + 's';
+            document.body.appendChild(confetti);
+        } 
+    </script>
+</body>
+</html>

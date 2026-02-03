@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Special Video Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        width: 90%;
+    }
+
+    h1 {
+        margin-bottom: 15px;
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+
+    video {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+    }
+
+    button {
+        margin-top: 15px;
+        padding: 10px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        background: #ff4b2b;
+        color: white;
+        transition: transform 0.2s;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>For you 💌</h1>
+
+    <video id="myVideo" poster="d.jpg">
+        <source src="vs.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <br>
+    <button onclick="playVideo()">▶ Play Video</button>
+</div>
+
+<script>
+    let clickCount = 0;
+
+function playVideo() {
+    const video = document.getElementById("myVideo");
+    const btn = document.querySelector("button");
+    clickCount++;
+
+    if (clickCount === 1) {
+        // First click → play video with sound
+        video.muted = false;
+        video.volume = 1;
+        video.play();
+        btn.innerText = "Click Again for Surprise💗";
+    } 
+    else if (clickCount === 2) {
+        btn.innerText = "open";
+
+        // Second click → open another HTML file
+       window.location.href = "Aadi1.html";
+        // OR new tab:
+        // window.open("second.html", "_blank");
+    }
+}
+
+</script>
+
+</body>
+</html>
